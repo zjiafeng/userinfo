@@ -14,7 +14,7 @@
 		},
 		methods: {
 			login() {
-				this.$router.push('/error')
+				this.$router.push('/swiper')
 			}
 		},
 		mounted() {

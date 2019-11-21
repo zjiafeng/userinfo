@@ -6,6 +6,8 @@ import Mint from 'mint-ui';
 import 'lib-flexible';
 import './styles/main.less';
 import { post, fetch }  from "../config/axios";
+import 'swiper/css/swiper.css';
+import 'mint-ui/lib/style.css'
 
 Vue.use(Mint);
 Vue.prototype.$get=fetch;

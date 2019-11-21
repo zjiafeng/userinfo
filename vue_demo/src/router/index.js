@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 
 const Login = () => import('@/views/login/index');
 const Error = () => import('@/views/error/index');
+const Swiper = () => import('@/views/detail/swiper');
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,14 @@ const routes = [
 	  title: '首页',
 	  requireAuth: false, // 登录权限
 	}
+  },
+  {
+    path: '/swiper',
+    name: 'swiper',
+    component: Swiper,
+    meta: {
+      title: '内容详情'
+    }
   },
   {
     path: '/error',
