@@ -2,10 +2,11 @@
  *  路由拦截
  */
 
-import router from './index';
+import router from './index.js';
 
 // 路由导航守卫
 router.beforeEach((to, from, next) => {
+	
   // 登录权限
   if (to.meta.requireAuth) { // 判断是否校验登录权限
     if (!window.myVue.userName) { // 判断是否登录，根据实际业务处理
@@ -18,16 +19,17 @@ router.beforeEach((to, from, next) => {
       return;
     }
   }
+  
   // 路由发生变化修改页面title
   if (to.meta.title) {
-    document.title = to.meta.title + ' | vue-demo';
+    document.title = to.meta.title;
   } else {
     document.title = 'vue-demo';
   }
   next()
 })
 
-router.afterEach((to, from) => {
+/* router.afterEach((to, from) => {
   // console.log(to, from);
   if (!(from.path === '/' && from.name === null)) {
     setLocalRoute(to, from)
@@ -46,4 +48,4 @@ function setLocalRoute(to, from) {
   if (localRoute.length > 5) {
     localRoute.splice(0, 1)
   }
-}
+} */

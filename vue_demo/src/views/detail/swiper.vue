@@ -8,8 +8,8 @@
 			<div class="swiper-slide"></div>
 			<div class="swiper-slide"></div>
 			<div class="swiper-slide">
-				<input type="text">
-				<button @click="()=>{this.$router.push('/error')}">进入</button>
+				<!-- <input type="text"> -->
+				<button @click="()=>{this.$router.push('/love')}">进入</button>
 			</div>
 		</div>
 		<!-- Add Pagination -->
@@ -55,7 +55,7 @@
 	button{
 		margin: 0 auto;
 		display: block;
-		margin-top: 10vh;
+		margin-top: 70vh;
 		width: 2rem;
 		height:2rem;
 		background-color: #0076FF;

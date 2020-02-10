@@ -4,6 +4,7 @@ import VueRouter from 'vue-router';
 const Login = () => import('@/views/login/index');
 const Error = () => import('@/views/error/index');
 const Swiper = () => import('@/views/detail/swiper');
+const Lovein = () => import('@/views/detail/lovey');
 
 Vue.use(VueRouter)
 
@@ -26,6 +27,14 @@ const routes = [
     }
   },
   {
+    path: '/love',
+    name: 'love',
+    component: Lovein,
+    meta: {
+      title: 'I love You'
+    }
+  },
+  {
     path: '/error',
     name: 'error',
     component: Error,
@@ -44,5 +53,6 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
 
 export default router
