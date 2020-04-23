@@ -1,0 +1,1 @@
+export const loginImg = 'http://img3.imgtn.bdimg.com/it/u=904195782,2991572793&fm=26&gp=0.jpg';
