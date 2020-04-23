@@ -3,7 +3,7 @@
     <div class="dlu" v-show="isshow">
       <p>用户注册</p>
       <div class="input">
-        <el-input placeholder="请输入用户名" v-model="username" clearable>
+        <el-input placeholder="请输入用户名" autofocus v-model="username" clearable>
           <i slot="prefix" class="el-input__icon el-icon-user"></i>
         </el-input>
         <el-input placeholder="请输入密码" v-model="password" show-password>

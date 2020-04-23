@@ -59,7 +59,7 @@
             </el-submenu>
             <el-submenu index="3">
               <template slot="title">
-                <i class="el-icon-user-solid"></i>
+                <i class="el-icon-shopping-cart-2"></i>
                 <span>产品</span>
               </template>
               <el-menu-item index="3-1" @click="()=>{this.$router.push('/Index/Product')}">产品博览</el-menu-item>
@@ -67,14 +67,14 @@
             </el-submenu>
             <el-submenu index="4">
               <template slot="title">
-                <i class="el-icon-user-solid"></i>
+                <i class="el-icon-office-building"></i>
                 <span>公司</span>
               </template>
               <el-menu-item index="4-1" @click="()=>{this.$router.push('/Index/Company')}">公司概括</el-menu-item>
             </el-submenu>
             <el-submenu index="5">
               <template slot="title">
-                <i class="el-icon-user-solid"></i>
+                <i class="el-icon-bicycle"></i>
                 <span>旅游</span>
               </template>
               <el-menu-item index="5-1" @click="()=>{this.$router.push('/Index/Introduce')}">景区介绍</el-menu-item>

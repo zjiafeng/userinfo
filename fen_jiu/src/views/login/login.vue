@@ -4,7 +4,7 @@
       <div slot="header" class="clearfix">
         <span>欢迎登录 - 汾酒管理系统</span>
       </div>
-      <el-input placeholder="请输入用户名称" clearable class="input" v-model="username"></el-input>
+      <el-input autofocus placeholder="请输入用户名称" clearable class="input" v-model="username"></el-input>
       <el-input
         placeholder="请输入用户密码"
         show-password

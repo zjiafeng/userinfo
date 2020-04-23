@@ -153,7 +153,7 @@ export default {
     }
   }
   .right{
-    // width: 50%;
+    // width: 50%;/
     h2 {
       width: 150px;
       cursor: pointer;
@@ -167,7 +167,7 @@ export default {
     .flex{
       display: flex;
       dl{
-        margin: 15px;
+        margin: 20px;
         text-align: center;
         color:#FF0000;
         dd{
