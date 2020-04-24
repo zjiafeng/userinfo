@@ -45,19 +45,18 @@
 </template>
 
 <script>
+import bg1 from '@/assets/img/bg1.jpg';
+import bg2 from '@/assets/img/bg2.jpg';
+import bg3 from '@/assets/img/bg3.jpg';
+import bg4 from '@/assets/img/bg4.jpg';
+import bg5 from '@/assets/img/bg5.jpg';
+import bg6 from '@/assets/img/bg6.jpg';
+import bg7 from '@/assets/img/bg7.jpg';
 export default {
   name: "isindex",
   data() {
     return {
-      image: [
-        "http://img2.imgtn.bdimg.com/it/u=2335425513,2088247245&fm=26&gp=0.jpg",
-        "http://img2.imgtn.bdimg.com/it/u=3577075199,3590272171&fm=26&gp=0.jpg",
-        "http://img0.imgtn.bdimg.com/it/u=1206053419,2007724883&fm=26&gp=0.jpg",
-        "http://img4.imgtn.bdimg.com/it/u=796224866,3067532870&fm=26&gp=0.jpg",
-        "http://img5.imgtn.bdimg.com/it/u=4053123785,3492291148&fm=26&gp=0.jpg",
-        "http://img5.imgtn.bdimg.com/it/u=125915423,621487524&fm=26&gp=0.jpg",
-        "http://img2.imgtn.bdimg.com/it/u=360221579,3325758801&fm=26&gp=0.jpg"
-      ],
+      image: [bg1,bg2,bg3,bg4,bg5,bg6,bg7],
       message: [
         {
           url:
