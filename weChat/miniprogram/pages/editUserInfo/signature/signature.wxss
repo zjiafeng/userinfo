@@ -1,0 +1,13 @@
+/* miniprogram/pages/editUserInfo/signature/signature.wxss */
+.signature text{
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin: 10px;
+  font-size: 24px;
+  font-weight: 600;
+}
+.signature input{
+  border: 2px solid #777;
+  padding: 5px;
+}

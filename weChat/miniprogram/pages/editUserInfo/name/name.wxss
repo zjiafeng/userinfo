@@ -1,0 +1,15 @@
+/* miniprogram/pages/editUserInfo/name/name.wxss */
+.name button{
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 5px;
+  font-size: 24px;
+  font-weight: 600;
+  background-color: #eee;
+  border-top: 1px solid #777;
+}
+.name input{
+  border: 2px solid #777;
+  padding: 5px;
+}

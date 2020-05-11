@@ -1,0 +1,7 @@
+<!--miniprogram/pages/editUserInfo/head/head.wxml-->
+<view class="head">
+	<button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">使用微信头像</button>
+	<button bindtap="handbtn">自定义用户头像</button>
+	<!-- <input type="text" value="{{userPhoto}}}" bindinput="handtext" bindconfirm="handbtn"></input> -->
+  <image src="{{userPhoto}}" bindtap="handUpdataimg"></image>
+</view>

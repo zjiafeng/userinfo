@@ -1,0 +1,13 @@
+/* miniprogram/pages/editUserInfo/editUserInfo.wxss */
+.user_list .user_list_item{
+  display: flex;
+  justify-content: space-between;
+  height: 50rpx;
+  align-items: center;
+  border-bottom: 1px solid #409EFF;
+  padding: 20rpx 30rpx;
+}
+.warn{
+  font-size: 12px;
+  color: red;
+}

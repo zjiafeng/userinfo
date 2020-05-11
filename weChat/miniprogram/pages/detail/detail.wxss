@@ -1,0 +1,22 @@
+/* miniprogram/pages/detail/detail.wxss */
+.detail button{
+  width: 100%;
+}
+.detail-item {
+  margin: 20rpx;
+  border-bottom: 1px #b4b5b6 dashed;
+  padding: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.detail-item image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+
+.detail-phone,
+.detail-weixin {
+  margin-right: 16rpx;
+}

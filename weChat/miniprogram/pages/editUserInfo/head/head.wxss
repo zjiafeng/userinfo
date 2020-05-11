@@ -1,0 +1,21 @@
+/* miniprogram/pages/editUserInfo/head/head.wxss */
+.head button {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 5px;
+  font-size: 24px;
+  font-weight: 600;
+  background-color: #eee;
+  border-top: 1px solid #777;
+}
+
+.head image {
+  border-radius: 50%;
+  padding: 0;
+  width: 300rpx;
+  height: 300rpx;
+  margin: 30rpx;
+  border: 2px solid #409EFF;
+  /* background-color: #777; */
+}
