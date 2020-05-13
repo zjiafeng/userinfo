@@ -28,25 +28,16 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    db.collection('userinfo').field({
-      nickName: true,
-      links: true,
-      userPhoto: true,
-    }).get().then((res) => {
-      // console.log(res.data)
-      if (res.data) {
-        this.setData({
-          listData: res.data
-        })
-      }
-    })
+    this.getListData();
+    this.getBannerList();
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getListData();
+    this.getBannerList();
   },
 
   /**
@@ -120,6 +111,27 @@ Page({
     let id = e.currentTarget.dataset.id._id;
     wx.navigateTo({
       url: '/pages/detail/detail?id=' + id,
+    })
+  },
+  getListData(){
+    db.collection('userinfo').field({
+      nickName: true,
+      links: true,
+      userPhoto: true,
+    }).get().then((res) => {
+      // console.log(res.data)
+      if (res.data) {
+        this.setData({
+          listData: res.data
+        })
+      }
+    })
+  },
+  getBannerList(){
+    db.collection('banner').get().then((res)=>{
+      this.setData({
+        imgurls:res.data
+      })
     })
   }
 })

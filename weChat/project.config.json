@@ -92,6 +92,27 @@
 					"pathName": "pages/detail/detail",
 					"query": "id=37e26adb5eb641a1005e2c6c4907845b",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/friendList/friendList",
+					"pathName": "pages/friendList/friendList",
+					"query": "id=6af880a55eb91a61008568d769bae25c",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/near/near",
+					"pathName": "pages/near/near",
+					"query": "id=6af880a55eb91a61008568d769bae25c",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

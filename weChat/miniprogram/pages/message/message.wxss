@@ -1,1 +1,6 @@
 /* miniprogram/pages/message/message.wxss */
+text{
+  padding: 20rpx;
+  font-weight: 600;
+  font-size: 38rpx;
+}

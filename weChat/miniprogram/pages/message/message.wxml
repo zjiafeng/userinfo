@@ -1,2 +1,20 @@
 <!--miniprogram/pages/message/message.wxml-->
-<text>miniprogram/pages/message/message.wxml</text>
+<view class="message" wx:if="{{canIUse}}">
+
+	<!-- 暂无消息 -->
+	<view wx:if="{{!userMessage.length}}">
+		<text>暂无消息</text>
+		<button bindtap="startDiscovery">搜索</button>
+		<button bindtap="stopDiscovery">停止搜索</button>
+	</view>
+	<!-- 消息列表 -->
+	<view wx:else>
+		<text>消息列表</text>
+		<!-- <view wx:for="{{userMessage}}" wx:key="*this">
+			<text>{{item}}</text>
+		</view> -->
+    <remove-list wx:for="{{userMessage}}" wx:key="*this" messageId="{{item}}" bindmyevent="onMyEvent"></remove-list> 
+	</view>
+
+  
+</view>

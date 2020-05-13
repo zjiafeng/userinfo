@@ -26,11 +26,13 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    this.getLocation();
     wx.cloud.callFunction({
       name: 'login',
       data: {},
     }).then((res) => {
       let _openid = res.result.openid;
+      this.getMessage();
       db.collection('userinfo').where({
         _openid: _openid
       }).get().then((res) => {
@@ -39,7 +41,8 @@ Page({
           this.setData({
             userPhoto: app.userInfo.userPhoto,
             nickName: app.userInfo.nickName,
-            canIUse: true
+            canIUse: true,
+            id: app.userInfo._id
           })
         } else {
           this.setData({
@@ -104,12 +107,15 @@ Page({
           userPhoto: this.data.userPhoto,
           nickName: this.data.nickName,
           signature: '',
-          phoneNumber: '',
-          weixinNumber: '',
+          phone: '',
+          weixin: '',
           links: 0,
           time: new Date(),
+          friendList : [],
           isLocation: true,
-          friendList : []
+          latitude:this.latitude,
+          longitude:this.longitude,
+          location: db.Geo.Point(this.longitude,this.latitude)
         }
       }).then((res) => {
         db.collection('userinfo').doc(res._id).get().then(res => {
@@ -119,10 +125,43 @@ Page({
           this.setData({
             userPhoto: app.userInfo.userPhoto,
             nickName: app.userInfo.nickName,
-            canIUse: true
+            canIUse: true,
+            id: app.userInfo._id
           })
         })
       })
     }
+  },
+  getMessage(){
+    db.collection('message').where({
+      userId : app.userInfo._id
+    }).watch({
+      onChange: function(snapshot) {
+        // console.log(snapshot.docs[0]);
+        if(snapshot.docs[0].list.length){
+          wx.showTabBarRedDot({
+            index: 2
+          })
+          app.userMessage = snapshot.docs[0].list;
+        }else{
+          wx.hideTabBarRedDot({
+            index: 2
+          })
+          app.userMessage = [];
+        }
+      },
+      onError: function(err) {
+        console.error('the watch closed because of error', err)
+      }
+    })
+  },
+  getLocation(){
+    wx.getLocation({
+      type: 'gcj02',
+      success: (res) => {
+        this.latitude = res.latitude
+        this.longitude = res.longitude
+      }
+    })
   }
 })

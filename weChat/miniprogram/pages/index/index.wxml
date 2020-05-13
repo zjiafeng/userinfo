@@ -1,13 +1,13 @@
 <!--miniprogram/pages/index/index.wxml-->
 <wxs src="../../utils/wordSplit.wxs" module="m1" />
 <wxs src="../../utils/unitFormat.wxs" module="m2" />
-
+<search></search>
 <view class="index">
 	<!-- 轮播图展示 -->
 	<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
 		<block wx:for="{{imgurls}}" wx:key="*this">
 			<swiper-item>
-				<image mode="aspectFill" src="{{item}}"></image>
+				<image mode="aspectFill" src="{{item.fileId}}"></image>
 			</swiper-item>
 		</block>
 	</swiper>

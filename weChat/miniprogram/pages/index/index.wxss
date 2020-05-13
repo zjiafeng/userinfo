@@ -3,6 +3,7 @@ swiper {
   height: 400rpx;
   margin: 20rpx;
   overflow: hidden;
+  margin-top: 100rpx;
 }
 
 swiper image {

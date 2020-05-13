@@ -16,7 +16,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(options.id)
+    console.log(options.id)
     let id = options.id;
     db.collection('userinfo').doc(id).get().then((res) => {
       this.setData({
@@ -89,5 +89,58 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  handleAddFriend() {
+    if (app.userInfo._id) {
+      db.collection('message').where({
+        userId:this.data.detail._id
+      }).get().then((res)=>{
+        if(res.data.length){ //更新
+          if(res.data[0].list.includes(app.userInfo._id)){
+            wx.showToast({
+              title: '申请成功！',
+            })
+          }else{
+            wx.cloud.callFunction({
+              name:'update',
+              data:{
+                collection:'message',
+                where:{
+                  userId:this.data.detail._id
+                },
+                data:`{ list:_.unshift('${app.userInfo._id}') }`
+              }
+            }).then((res)=>{
+              wx.showToast({
+                title: '申请成功。',
+              })
+            })
+          }
+        }else{ //添加
+          db.collection('message').add({
+            data:{
+              userId:app.userInfo._id,
+              list:[this.data.detail._id]
+            }
+          }).then((res)=>{
+            wx.showToast({
+              title: '申请成功'
+            })
+          })
+        }
+      })
+    } else {
+      wx.showToast({
+        title: '请先登录',
+        duration: 2000,
+        success: () => {
+          setTimeout(() => {
+            wx.switchTab({
+              url: 'pages/user/user',
+            })
+          }, 2000);
+        }
+      })
+    }
   }
 })
