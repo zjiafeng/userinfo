@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejs模板测试</title>
+</head>
+<body>
+    <ul>
+        <%for(var i=0;i<list.length;i++){%>
+            <li><%=list[i]%></li>
+        <%}%>
+
+        <%if(true){%>
+        <div>true</div>
+        <%}else{%>
+        <div>false</div>
+        <%}%> 
+        
+        <%-username%>
+    </ul>
+</body>
+</html>

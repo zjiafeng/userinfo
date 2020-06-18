@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编辑数据</title>
+</head>
+<body>
+    <h2>编辑用户</h2>
+
+
+    <form action="/doupdata" method="post">
+
+        用户id:<input type="text" disabled name="id" value="{{@list._id}}"/>
+        <br/>
+        <br/>
+
+        用户名：<input type="text" name="username" value="{{list.username}}"/>
+        <br/>
+        <br/>
+
+        年　龄：<input type="text" name="age" value="{{list.age}}"/>
+
+        <br/>
+        <br/>
+        性  别：<input type="text" name="sex" value="{{list.sex}}"/>
+        <br/>
+        <br/>
+        爱  好：<input type="text" name="like" value="{{list.like}}"/>
+        <br/>
+        <br/>
+        <input type="submit" value="提交"/>
+    </form>
+</body>
+</html>

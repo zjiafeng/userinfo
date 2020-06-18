@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模板渲染</title>
+</head>
+
+<body>
+    <h1>这是个koa-art-template模板</h1>
+    {{list}}
+    <hr>
+    {{@ list.html }}
+    <%- list.html %>
+    <hr>
+    <h2>if语句</h2>
+    {{if list.boolean}}
+        <p>{{list.name}}</p>
+    {{/if}}
+    <% if (list.boolean) { %>
+        <p><%= list.name %></p>
+    <% } %>
+    <hr>
+    <h2>循环语句</h2>
+    <ul>
+        {{each list.arr}}
+            <li>{{$index}} 、{{$value}}</li>
+        {{/each}}
+    </ul>
+    <ul>
+        <%for(var i=0;i<list.arr.length;i++){%>
+        <li><%=list.arr[i]%></li>
+        <%}%>
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据库模板渲染</title>
+    <style>
+        table {
+            display: inline-table;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        table tr:nth-child(2n) {
+            background-color: #333;
+            color: #eee;
+        }
+
+        table tr:nth-child(2n+1) {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <button><a href="/add">添加数据</a></button><br>
+    <table>
+        <tr>
+            <td>姓名</td>
+            <td>性别</td>
+            <td>年龄</td>
+            <td>爱好</td>
+            <td>操作</td>
+        </tr>
+        {{each list}}
+        <tr data-id={{@$value._id}}>
+            <td>{{$value.username}}</td>
+            <td>{{$value.sex}}</td>
+            <td>{{$value.age}}</td>
+
+            <td>
+                {{each $value.like}}
+                {{$value}}
+                {{/each}}
+            </td>
+
+            <td>
+                <button><a href="/updata?id={{@$value._id}}">编辑 </a></button>
+                <button><a href="/remove?id={{@$value._id}}">删除</a></button>
+            </td>
+        </tr>
+        {{/each}}
+
+    </table><br>
+
+</body>
+
+</html>

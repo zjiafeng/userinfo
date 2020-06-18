@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义下拉框</title>
+    <script src="http://code.jquery.com/jquery-2.2.4.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    #label {
+        display: flex;
+        width: 276px;
+        height: 46px;
+        border: 2px solid #777;
+        padding: 0 10px;
+        align-items: center;
+    }
+
+    input {
+        width: 250px;
+        height: 100%;
+        border: 0;
+        outline: none;
+        font-size: 24px;
+    }
+
+    .arrow {
+        width: 0;
+        height: 0;
+        border-width: 28px 14px 0;
+        border-style: solid;
+        color: transparent;
+        border-top-color: #777;
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+
+    .arrow::after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-width: 24px 12px 0;
+        border-style: solid;
+        color: transparent;
+        border-top-color: #fff;
+        position: absolute;
+        top: -34px;
+        left: -12px;
+    }
+
+    ul {
+        width: 298px;
+        border: 1px solid #777;
+        display: none;
+    }
+
+    ul li {
+        width: 278px;
+        height: 30px;
+        line-height: 30px;
+        border-bottom: 1px solid #777;
+        padding: 0 10px;
+        list-style: none;
+    }
+</style>
+
+<body>
+    <div>
+        <div id="label">
+            <input type="text" placeholder="请选择星期" readonly>
+            <!-- 箭头 -->
+            <div class="arrow"></div>
+        </div>
+
+        <ul></ul>
+    </div>
+    <script>
+        $(function () {
+            $('li').eq(new Date().getDay()).css({'backgroundColor':'#409EEF'});
+            $('#label').click('on', function (e) {
+                stopPropagation(e);
+                if ($('ul').is(':hidden')) {
+                    $('.arrow').css({ 'transform': 'rotate(180deg)' });
+                    $('ul').show();
+                }else{
+                    $('.arrow').css({ 'transform': 'rotate(0deg)' });
+                    $('ul').hide();
+                }
+            })
+            $('ul li').click('on',function(e){
+                stopPropagation(e);
+                $('input').val($(this).html());
+                $('.arrow').css({ 'transform': 'rotate(0deg)' });
+                $('ul').hide();
+            })
+            $(document).click('on',function(e){
+                $('.arrow').css({ 'transform': 'rotate(0deg)' });
+                $('ul').hide();
+            })
+        })
+        var string = '今天是星期', list = "";
+        var dateArr = ['天', '一', '二', '三', '四', '五', '六'];
+        dateArr.forEach((item, index) => {
+            list += `<li data-arr=${index}>${string}${item}</li>`;
+        })
+        $('ul').html(list);
+        //返回星期方法
+        function returnWeekDay() {
+            let data = new Date().getDay();
+            return string + dateArr[data]
+        }
+        //阻止事件冒泡
+        function stopPropagation(e) {
+            if (e.stopPropagation)
+                e.stopPropagation();
+            else
+                e.cancelBubble = true;
+        }
+    </script>
+</body>
+
+</html>
