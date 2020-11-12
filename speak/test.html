@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>语音播报文字变色</title>
+    <script src="./speak.js"></script>
+</head>
+
+<body>
+    <p></p>
+    <button onclick="speak()">开始朗读</button>
+    <button onclick="SPEAK.stopSpeak()">结束朗读</button>
+    <button onclick="SPEAK.pauseSpeak()">暂停朗读</button>
+    <button onclick="SPEAK.resumeSpeak()">继续朗读</button>
+    <button onclick="SPEAK.resetSpeak()">重新朗读</button>
+    <button onclick="addSetrate()">加速</button>
+    <span>0</span>
+    <button onclick="cutSetrate()">减速</button>
+    <script>
+        let p_text = document.getElementsByTagName('p')[0];
+        let span_text = document.getElementsByTagName('span')[0];
+        let text = '播报文字内容：您好，这是个语音播报文字同步变色的demo';
+        p_text.innerText = text;
+        console.log(text.length);
+        const SPEAK = new ISpeechHelper();
+        let wordsExp = /^[\u4e00-\u9fa5a-zA-z0-9]+$/;
+        let readcontent = "";
+        let lastcontent = "";
+        let rate = 1;
+        span_text.innerText = rate;
+        let speak = function () {
+            let wordsExp = /^[\u4e00-\u9fa5a-zA-z0-9]+$/;
+            let wordsExp1 = /^[\u4e00-\u9fa5a-zA-z0-9]{2}/;
+            let specialChars1 = "【】；“”‘’{}，@";
+            let specialChars2 = "?";
+            let count1 = 0;
+            let count2 = 0;
+
+
+            SPEAK.speck(text, (res) => {
+                // console.log();
+                let pos = res.data.charIndex + Math.ceil(count1 / 2) + Math.ceil(count2 / 2);
+                if (pos + 1 < text.length && !wordsExp.test(text.charAt(pos + 1))) {
+                    if (specialChars1.indexOf(text.charAt(pos + 1)) > -1) {
+                        count1++;
+                    } else if (specialChars2.indexOf(text.charAt(pos + 1)) < 0) {
+                        count1 += 0.5;
+                    }
+                }
+                if (wordsExp1.test(text)) {
+                    pos = res.data.charIndex + Math.ceil(count1 / 2) + Math.ceil(count2 / 2);
+                    if (pos + 1 < text.length && !wordsExp.test(text.charAt(pos + 1))) {
+                        if (specialChars1.indexOf(text.charAt(pos + 1)) > -1) {
+                            count1++;
+                        } else if (specialChars2.indexOf(text.charAt(pos + 1)) < 0) {
+                            count1 += 0.5;
+                        }
+                    }
+                }
+                pos = res.data.charIndex + Math.ceil(count1 / 2) + Math.ceil(count2 / 2);
+                if (pos + 1 == text.length) {
+                    pos++
+                }
+                readcontent = text.substring(0, pos);
+                lastcontent = text.substring(pos);
+                p_text.innerHTML = "<B><font color=#004E97>" + readcontent + "</font></B>" + lastcontent;
+                if (res.event === 'over' && res.data.charIndex + res.data.charLength > text.length - 1) { //结尾符号
+                    p_text.innerHTML = "<B><font color=#004E97>" + text + "</font></B>";
+                }
+            }, () => {
+                console.log('语音播报异常');
+            })
+        };
+        let addSetrate = function () {
+            if (rate < 4) {
+                rate++
+                span_text.innerText = rate;
+                if(rate > 0){
+                    SPEAK.setrate(rate)
+                }else{
+                    console.log((10+rate)/10)
+                    SPEAK.setrate((10+rate)/10)
+                }
+            }
+        }
+        let cutSetrate = function () {
+            if (rate > -4) {
+                rate--
+                span_text.innerText = rate;
+                if(rate > 0){
+                    SPEAK.setrate(rate)
+                }else{
+                    console.log((10+rate)/10)
+                    SPEAK.setrate((10+rate)/10)
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
